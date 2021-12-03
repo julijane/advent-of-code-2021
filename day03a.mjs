@@ -4,7 +4,7 @@ const input = await fs.readFile('./inputs/day03.txt', 'utf-8')
 const measurements = input.split('\n').filter(l=>l.length)
 const numBits = measurements[0].length
 
-let sums = measurements.reduce(
+const sums = measurements.reduce(
     (acc, val) => {
         for (let bit = 0; bit < numBits; bit++) {
             acc[bit] += (val.substr(bit, 1) == '1' ? 1 : -1)
@@ -14,7 +14,7 @@ let sums = measurements.reduce(
     new Array(numBits).fill(0)
 )
 
-let gamma = parseInt(sums.map(s => s < 0 ? '0' : '1').join(''), 2)
-let epsilon = gamma ^ (2 ** numBits - 1)
+const gamma = parseInt(sums.map(s => s < 0 ? '0' : '1').join(''), 2)
+const epsilon = gamma ^ (2 ** numBits - 1)
 
 console.log(gamma * epsilon)
