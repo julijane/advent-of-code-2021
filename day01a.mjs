@@ -1,7 +1,7 @@
 import fs from 'node:fs/promises'
 
 const input = await fs.readFile('./inputs/day01.txt', 'utf-8')
-const values = input.split('\n').filter(l => l != '').map(l => parseInt(l))
+const values = input.split('\n').filter(l => l.length).map(l => parseInt(l))
 
 let increases = 0
 
