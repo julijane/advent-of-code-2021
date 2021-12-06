@@ -1,9 +1,7 @@
 import fs from 'node:fs/promises'
 
 const input = await fs.readFile('./inputs/day06.txt', 'utf-8')
-const lines = input.split('\n')
-
-let population = lines[0].split(',').map(n => parseInt(n))
+const population = input.split(',').map(Number)
 
 let fishByDay = population.reduce(
     (acc, val) => {
@@ -14,9 +12,8 @@ let fishByDay = population.reduce(
 )
 
 for (let day = 0; day < 256; day++) {
-    const zeroDayFish = fishByDay.shift()
-    fishByDay[6] += zeroDayFish
-    fishByDay[8] = zeroDayFish
+    fishByDay[8] = fishByDay.shift()
+    fishByDay[6] += fishByDay[8]
 
     if (day == 79 || day == 255)
         console.log(fishByDay.reduce(
@@ -24,4 +21,3 @@ for (let day = 0; day < 256; day++) {
             0
         ))
 }
-
