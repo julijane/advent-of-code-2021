@@ -25,7 +25,7 @@ function recurse(prior, smalltwice, istwice) {
             continue
         }
 
-        const isSmall = !/[A-Z]/.test(nexthop)
+        const isSmall = nexthop[0] >= 'a'
         const visited = isSmall && prior.includes(nexthop)
 
         if (visited && !smalltwice) continue
